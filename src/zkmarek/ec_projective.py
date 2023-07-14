@@ -13,7 +13,9 @@ class ECProjective:
     def __getitem__(self, key: int) -> Field:
         return self.coords[key]
 
-    def __eq__(self, other: "ECProjective") -> bool: # pyright: ignore [reportIncompatibleMethodOverride]
+    def __eq__(self, other: object) -> bool:
+        if not isinstance(other, ECProjective):
+            return NotImplemented
         return self.coords == other.coords
 
     def to_affine(self):

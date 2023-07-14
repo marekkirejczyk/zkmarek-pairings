@@ -8,7 +8,9 @@ class Field:
         self.value = value % order
         self.order = order
 
-    def __eq__(self, other: "Field") -> bool: # pyright: ignore [reportIncompatibleMethodOverride]
+    def __eq__(self, other: object) -> bool:
+        if not isinstance(other, Field):
+            return NotImplemented
         assert self.order == other.order
         return self.value == other.value
 
