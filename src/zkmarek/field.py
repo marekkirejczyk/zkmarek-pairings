@@ -30,9 +30,17 @@ class Field:
     def __neg__(self) -> "Field":
         return Field(-self.value % self.order, self.order)
 
-    # TODO!
     def inv(self) -> "Field":
-        return Field(self.value, self.order)
+        if self.value == 0:
+            raise ZeroDivisionError()
+        prev_r = self.order
+        r = self.value
+        prev_t, t = 0, 1
+        while (r != 0):
+            quotient = prev_r // r
+            prev_r, r = r, prev_r - quotient * r
+            prev_t, t = t, prev_t - quotient * t
+        return Field(prev_t, self.order)
 
     def __str__(self) -> str:
         return f"({self.value} % {self.order})"

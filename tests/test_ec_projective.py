@@ -35,9 +35,8 @@ class TestECProjective:
         actual = ECProjective.from_affine(affine).coords
         assert actual == [Field(1, 41), Field(7, 41), Field(1, 41)]
 
-    @pytest.mark.skip(reason="TODO!")
     def test_from_to_affine(self):
         affine = ECAffine.from_int([1, 7], 41)
         actual = ECProjective.from_affine(affine).to_affine()
-        assert actual == affine
+        assert actual.coords == affine.coords
 

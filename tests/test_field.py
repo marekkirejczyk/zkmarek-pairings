@@ -1,4 +1,5 @@
 import pytest
+from tests.const import TEST_PRIMES
 from zkmarek.field import Field
 
 
@@ -67,3 +68,15 @@ class TestField:
         assert -Field(1, 3) == Field(2, 3)
         assert -Field(2, 3) == Field(1, 3)
         assert -Field(17, 29) == Field(12, 29)
+
+    def test_inv(self):
+        assert Field(2, 5).inv() == Field(3, 5)
+
+    def test_inv_div_by_zero(self):
+        with pytest.raises(ZeroDivisionError):
+            Field(0, 5).inv()
+
+    def test_inv_roundtrip(self):
+        for p in TEST_PRIMES:
+            for i in range(1, p):
+                assert Field(i, p).inv() * Field(i, p) == Field(1, p)
