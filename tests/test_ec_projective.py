@@ -1,11 +1,10 @@
 import pytest
 from zkmarek.ec_affine import ECAffine
-
 from zkmarek.ec_projective import ECProjective
 from zkmarek.field import Field
 
-class TestECProjective:
 
+class TestECProjective:
     def test_from_int(self):
         actual = ECProjective.from_int([1, 2, 3], 41).coords
         assert actual == [Field(1, 41), Field(2, 41), Field(3, 41)]
@@ -49,6 +48,3 @@ class TestECProjective:
         affine = ECAffine.from_int([1, 7], 41)
         actual = ECProjective.from_affine(affine).to_affine()
         assert actual.coords == affine.coords
-
-
-

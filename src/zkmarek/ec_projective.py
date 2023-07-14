@@ -10,10 +10,12 @@ class ECProjective:
         assert(coords[0].order == coords[1].order == coords[2].order)
         self.coords = coords
 
-    def __getitem__(self, key):
+    def __getitem__(self, key: int) -> Field:
         return self.coords[key]
 
-    def __eq__(self, other: "ECProjective") -> bool:
+    def __eq__(self, other: object) -> bool:
+        if not isinstance(other, ECProjective):
+            return NotImplemented
         return self.coords == other.coords
 
     def to_affine(self):
@@ -24,5 +26,5 @@ class ECProjective:
         return ECProjective([other[0], other[1], Field(1, other[0].order)])
 
     @staticmethod
-    def from_int(coords: list[int], order) -> "ECProjective":
+    def from_int(coords: list[int], order: int) -> "ECProjective":
         return ECProjective([Field(c, order) for c in coords])

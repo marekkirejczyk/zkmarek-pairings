@@ -32,9 +32,9 @@ class TestField:
 
     def test_eq_unequal_orders(self):
         with pytest.raises(AssertionError):
-            Field(1, 13) == Field(1, 41)
+            Field(1, 13) == Field(1, 41) # pyright: ignore [reportUnusedExpression]
         with pytest.raises(AssertionError):
-            Field(3, 13) == Field(3, 29)
+            Field(3, 13) == Field(3, 29) # pyright: ignore [reportUnusedExpression]
 
     def test_add(self):
         assert Field(1, 13) + Field(10, 13) == Field(11, 13)
@@ -42,7 +42,7 @@ class TestField:
 
     def test_add_unequal_orders(self):
         with pytest.raises(AssertionError):
-            Field(2, 13) + Field(2, 41)
+            Field(2, 13) + Field(2, 41) # pyright: ignore [reportUnusedExpression]
 
     def test_sub(self):
         assert Field(0, 13) - Field(1, 13) == Field(12, 13)
@@ -50,7 +50,7 @@ class TestField:
 
     def test_sub_unequal_orders(self):
         with pytest.raises(AssertionError):
-            Field(2, 13) - Field(2, 41)
+            Field(2, 13) - Field(2, 41) # pyright: ignore [reportUnusedExpression]
 
     def test_mul(self):
         assert Field(2, 13) * Field(2, 13) == Field(4, 13)
@@ -58,7 +58,7 @@ class TestField:
 
     def test_mul_unequal_orders(self):
         with pytest.raises(AssertionError):
-            Field(2, 13) * Field(2, 41)
+            Field(2, 13) * Field(2, 41) # pyright: ignore [reportUnusedExpression]
 
     def test_pow(self):
         assert Field(2, 13) ** 2 == Field(4, 13)

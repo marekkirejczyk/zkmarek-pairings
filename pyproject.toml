@@ -5,6 +5,11 @@ build-backend = "hatchling.build"
 [tool.pytest.ini_options]
 pythonpath = "src"
 
+[tool.pyright]
+include=["src", "tests"]
+extraPaths=["src"]
+typeCheckingMode="strict"
+
 [project]
 name = "zkmarek_pairings"
 version = "0.0.1"
