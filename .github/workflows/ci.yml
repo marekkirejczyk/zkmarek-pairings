@@ -25,6 +25,9 @@ jobs:
     - name: Lint (ruff)
       run: |
         ruff src tests
+    - name: Types (pyright)
+      run: |
+        pyright
     - name: Tests (pytest)
       run: |
         pytest
