@@ -8,6 +8,7 @@ pythonpath = "src"
 [tool.pyright]
 include=["src", "tests"]
 extraPaths=["src"]
+typeCheckingMode="strict"
 
 [project]
 name = "zkmarek_pairings"

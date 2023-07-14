@@ -1,9 +1,6 @@
 from zkmarek.field import Field
-from typing import Generic, TypeVar
 
-FieldType = TypeVar("FieldType")
-
-class ECAffine(Generic[FieldType]):
+class ECAffine:
     coords: list[Field]
 
     def __init__(self, coords: list[Field]):
@@ -11,9 +8,9 @@ class ECAffine(Generic[FieldType]):
         assert(coords[0].order == coords[1].order)
         self.coords = coords
 
-    def __getitem__(self, key):
+    def __getitem__(self, key: int) -> Field:
         return self.coords[key]
 
     @staticmethod
-    def from_int(coords: list[int], order) -> "ECAffine":
+    def from_int(coords: list[int], order: int) -> "ECAffine":
         return ECAffine([Field(c, order) for c in coords])

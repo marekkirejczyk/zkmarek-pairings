@@ -8,7 +8,7 @@ class Field:
         self.value = value % order
         self.order = order
 
-    def __eq__(self, other: "Field") -> bool:
+    def __eq__(self, other: "Field") -> bool: # pyright: ignore [reportIncompatibleMethodOverride]
         assert self.order == other.order
         return self.value == other.value
 
@@ -48,12 +48,12 @@ class Field:
     def __repr__(self) -> str:
         return f"({self.value} % {self.order})"
 
-    def __truediv__(self, other) -> "Field":
+    def __truediv__(self, other: "Field") -> "Field":
         return self * other.inv()
 
     def __hash__(self):
         return hash((self.value, self.order))
 
     @staticmethod
-    def random(p) -> "Field":
+    def random(p: int) -> "Field":
         return Field(secrets.randbelow(p), p)
