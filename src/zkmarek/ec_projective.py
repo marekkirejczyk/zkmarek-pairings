@@ -13,12 +13,15 @@ class ECProjective:
     def __getitem__(self, key):
         return self.coords[key]
 
-    @staticmethod
-    def from_affine(other: ECAffine):
-        return ECProjective([other[0], other[1], Field(1, other[0].order)])
+    def __eq__(self, other: "ECProjective") -> bool:
+        return self.coords == other.coords
 
     def to_affine(self):
         return ECAffine([self[0] / self[2], self[1] / self[2]])
+
+    @staticmethod
+    def from_affine(other: ECAffine):
+        return ECProjective([other[0], other[1], Field(1, other[0].order)])
 
     @staticmethod
     def from_int(coords: list[int], order) -> "ECProjective":

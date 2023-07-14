@@ -30,6 +30,16 @@ class TestECProjective:
         with pytest.raises(AssertionError):
             ECProjective([Field(1, 41), Field(2, 41), Field(3, 17)])
 
+    def test_eq(self):
+        a = ECProjective.from_int([1, 7, 1], 41)
+        b = ECProjective.from_int([1, 7, 1], 41)
+        assert a == b
+
+    def test_not_eq(self):
+        a = ECProjective.from_int([1, 7, 1], 41)
+        b = ECProjective.from_int([1, 34, 1], 41)
+        assert a != b
+
     def test_from_affine(self):
         affine = ECAffine.from_int([1, 7], 41)
         actual = ECProjective.from_affine(affine).coords
@@ -39,4 +49,6 @@ class TestECProjective:
         affine = ECAffine.from_int([1, 7], 41)
         actual = ECProjective.from_affine(affine).to_affine()
         assert actual.coords == affine.coords
+
+
 
