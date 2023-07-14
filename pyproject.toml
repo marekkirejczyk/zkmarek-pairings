@@ -1,0 +1,26 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.pytest.ini_options]
+pythonpath = "src"
+
+[project]
+name = "zkmarek_pairings"
+version = "0.0.1"
+authors = [
+  { name="Marek Kirejczyk", email="marek.kirejczyk@gmail.com" },
+]
+description = "Learing Elliptic Curves Pairings"
+readme = "README.md"
+requires-python = ">=3.11"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/marekkirejczyk/zkmarek-pairings"
+"Bug Tracker" = "https://github.com/marekkirejczyk/zkmarek-pairings/issues"
+
