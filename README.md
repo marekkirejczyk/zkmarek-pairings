@@ -13,3 +13,11 @@ Run tests
 ```sh
 pytest
 ```
+
+
+Run linter
+
+```
+ruff src tests
+pyright
+```
